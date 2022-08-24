@@ -66,11 +66,11 @@ def get_tech_news(amount):
     while next_link and count < amount:
         list_news = scrape_novidades(next_link)
         for news in list_news:
-            
-        print(scrape_noticia(html))
-        pull_news.extend(scrape_noticia(html))
-        next_link = scrape_next_page_link(html)
-        count += 1
+
+            print(scrape_noticia(html))
+            pull_news.extend(scrape_noticia(html))
+            next_link = scrape_next_page_link(html)
+            count += 1
 
     # for new in range(amount):
     #     links_news = scrape_novidades(html)
