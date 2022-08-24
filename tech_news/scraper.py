@@ -28,16 +28,31 @@ def scrape_novidades(html_content):
 # Requisito 3
 def scrape_next_page_link(html_content):
     selector = Selector(html_content)
-    url_next_page = selector.css(".next.page-numbers ::attr(href)").get()
-    if not url_next_page:
+    next_page_link = selector.css(".next.page-numbers ::attr(href)").get()
+    if not next_page_link:
         return None
 
-    return url_next_page
+    return next_page_link
 
 
 # Requisito 4
 def scrape_noticia(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(html_content)
+    comments_count = selector.css(".title-block::text").re(r"\d comments")
+    return {
+        "url": selector.css("head link[rel=canonical]::attr(href)").get(),
+        "title": selector.css(".entry-title::text").get().strip(),
+        "timestamp": selector.css(".meta-date::text").get(),
+        "writer": selector.css(".author a::text").get(),
+        "comments_count": 0
+        if len(comments_count) == 0
+        else int(comments_count[0][0]),
+        "summary": "".join(
+            selector.css(".entry-content > p:nth-of-type(1) *::text").getall()
+        ).strip(),
+        "tags": selector.css(".post-tags ul li a::text").getall(),
+        "category": selector.css(".label::text").get(),
+    }
 
 
 # Requisito 5
