@@ -56,26 +56,17 @@ def scrape_noticia(html_content):
 
 
 # Requisito 5
-#     test = list(news)
-# test = dict()
 def get_tech_news(amount):
-    html = fetch("https://blog.betrybe.com/")
-    next_link = scrape_next_page_link(html)
-    count = 0
-    pull_news = list()
-    while next_link and count < amount:
-        list_news = scrape_novidades(next_link)
-        for news in list_news:
+    pass
 
-            print(scrape_noticia(html))
-            pull_news.extend(scrape_noticia(html))
-            next_link = scrape_next_page_link(html)
-            count += 1
-
-    # for new in range(amount):
-    #     links_news = scrape_novidades(html)
-    # news = scrape_noticia(fetch(links_news[0]))
-    print(pull_news)
-
-
-get_tech_news(5)
+    # html = fetch("https://blog.betrybe.com/")
+    # next_link = scrape_next_page_link(html)
+    # count = 0
+    # pull_news = list()
+    # while next_link and count < amount:
+    #     list_news = scrape_novidades(next_link)
+    #     for news in list_news:
+    #         print(scrape_noticia(html))
+    #         pull_news.extend(scrape_noticia(html))
+    #         next_link = scrape_next_page_link(html)
+    #         count += 1
